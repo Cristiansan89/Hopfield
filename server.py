@@ -18,7 +18,8 @@ from models import *
 @app.route("/")
 def index():
     return render_template("code.html")
-@app.route("/cargar")
+
+@app.route("")
 def cargar():
     lst = [1, 2, 3]
 
@@ -28,6 +29,7 @@ def cargar():
     db.session.add(nueva_imagen)
     db.session.commit()
     return render_template("code.html")
+
 @app.route("/mostrar")
 def mostrar():
     primera_imagen=Imagen.query.first()
@@ -35,8 +37,11 @@ def mostrar():
     deserialized = js.loads(primera_imagen.imagen)
     print(deserialized, type(deserialized))
     return render_template("code.html")
+    
 if __name__ == "__main__":
     db.create_all()
-    app.run(debug=True)
+
+    # Ejecutor
+    app.run(debug=True, port= 8080)
 
 
