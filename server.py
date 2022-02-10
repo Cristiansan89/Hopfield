@@ -1,5 +1,5 @@
 from distutils.log import debug
-from flask import Flask, render_template
+from flask import Flask, render_template,request
 #nuevos
 import sqlite3
 from flask_sqlalchemy import SQLAlchemy
@@ -19,7 +19,27 @@ from models import *
 def index():
     return render_template("code.html")
 
-@app.route("")
+@app.route("/imagenes", methods=['POST', 'GET'])
+def imagenes():
+    if request.method == "GET":
+        return render_template("imagenes.html")
+    if request.method == "POST":
+        # paso los datos de la peticion a json
+        data = request.json
+        print(data)
+        print(data['imagen'],type(data['imagen']))
+        serializado = js.dumps(data['imagen'])
+        print(serializado, type(serializado))
+        nueva_imagen = Imagen(imagen=serializado)
+        db.session.add(nueva_imagen)
+        db.session.commit()
+        return js.dumps({"ok":1})
+
+
+
+
+
+@app.route("/cargar")
 def cargar():
     lst = [1, 2, 3]
 
@@ -33,7 +53,7 @@ def cargar():
 @app.route("/mostrar")
 def mostrar():
     primera_imagen=Imagen.query.first()
-    #filtrado primera_imagen=Imagen.query.filter_by(id=1).first()
+    #filtrado primera_imagen=Imagen.query.filter_by(letra="a").first()
     deserialized = js.loads(primera_imagen.imagen)
     print(deserialized, type(deserialized))
     return render_template("code.html")
