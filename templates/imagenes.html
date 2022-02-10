@@ -21,10 +21,13 @@
       </div>
       <div class="page" for="quantity" id="quantity">
         <h1>Cargar Imagen</h1>
-        <button class="cargar">Cargar</button>
+        <button onclick="cargar(this);" >Cargar</button>
+                  <button class="reset">RESET</button>
+        <button class="aprendizaje">ANALIZAR</button>
       </div>
     </div>
-    <script type="text/javascript" src="{{url_for('static', filename='js/IA.js')}}"></script>
+
     <script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='js/IA.js')}}"></script>
   </body>
 </html>
