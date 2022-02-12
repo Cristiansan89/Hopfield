@@ -27,3 +27,5 @@ var data={"imagen":arr}
 
     })
 }
+
+analizar = () => {}

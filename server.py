@@ -35,10 +35,6 @@ def imagenes():
         db.session.commit()
         return js.dumps({"ok":1})
 
-
-
-
-
 @app.route("/cargar")
 def cargar():
     lst = [1, 2, 3]

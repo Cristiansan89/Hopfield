@@ -5,19 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Red Hopfield</title>
-    <link href="{{url_for('static',filename='css/styles.css')}}"rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="{{url_for('static',filename='css/styles.css')}}" rel="stylesheet" />
   </head>
   <body>
-      <div class="left">
+    <div>
+      <div class="text-center">
+        <h1 class="text-danger display-3"><strong>Redes Hopfield</strong></h1>
+      </div>
       <div>
-        <div class="gridContainer"></div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+          <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" id="navAnalizar" onclick="botonAnalizar(this);"><strong>ANALIZAR</strong></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="navCargar" onclick="botonCargar(this);"><strong>CARGAR</strong></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div> 
+      <div class="row my-4">
+        <div class="col col-auto">
+          <div class="left mx-5">
+            <div class="gridContainer"></div>
+          </div>
+        </div>
+        <div class="col col-auto" id="ocultarGrid1">
+          <div class="mx-5">
+            <div class="gridContainer1" id="bloquear"></div>
+          </div>
+        </div>
       </div>
-      <div class="page" for="quantity" id="quantity">
-        <h1>Redes Hopfield</h1>
-        <button class="reset">RESET</button>
-        <button class="aprendizaje">ANALIZAR</button>
+      <div id="espaciar">
+        <div class="my-4" for="quantity" id="quantity">
+            <div class="row">
+              <div class="col col-auto">
+                <button id="boton1" class="btn btn-success">ANALIZAR</button>
+                <button id="boton2" onclick="cargar(this);" class="reset btn btn-danger">CARGAR</button>
+              </div>
+              <div class="col col-auto">
+                <button class="reset btn btn-warning">RESET</button>
+              </div>
+            </div>         
+        </div>
       </div>
+      <hr class="bg-success">
+
     </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  </body>
     <script type="text/javascript" src="{{url_for('static', filename='js/IA.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
   </body>
