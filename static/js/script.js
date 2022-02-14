@@ -1,6 +1,6 @@
 const grid = document.querySelector(".gridContainer");
 const userInput = document.getElementById("quantity");
-const resetButton = document.querySelector(".reset");
+const resetButton = document.querySelectorAll(".reset");
 
 const grid1 = document.querySelector(".gridContainer1");
 
@@ -42,12 +42,22 @@ square.addEventListener("click", function(event) {
 
 userInput.addEventListener("change", updateGrid);
 
-resetButton.addEventListener("click", function() {
-  grid.innerHTML = "";
-  grid.style.setProperty("grid-template-columns", `repeat(5, 2fr)`);
-  grid.style.setProperty("grid-template-rows", `repeat(5, 2fr)`);
-  createGrid();
-});
+for( i in resetButton){
+try {
+  resetButton[i].addEventListener("click", function() {
+      grid.innerHTML = "";
+      grid.style.setProperty("grid-template-columns", `repeat(5, 2fr)`);
+      grid.style.setProperty("grid-template-rows", `repeat(5, 2fr)`);
+      createGrid();
+    });
+} catch(e) {
+  // statements
+  console.log(e);
+}
+    
+}
+
+
 
 createGrid();
 createGrid1();
