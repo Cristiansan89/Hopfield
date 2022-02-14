@@ -2,7 +2,6 @@ cargar = () => {
 aiterar=grid.getElementsByTagName('div')
 arr=[]
 for(i in aiterar){
-
     console.log(aiterar[i])
     console.log(aiterar[i].className)
     if(aiterar[i].className=='color' ){
@@ -10,7 +9,6 @@ for(i in aiterar){
     }else if(aiterar[i].className=='square'){
          arr.push(-1)
     }
-
 }
 
 url="http://127.0.0.1:8080/imagenes"
