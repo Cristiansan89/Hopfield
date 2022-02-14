@@ -43,21 +43,18 @@ square.addEventListener("click", function(event) {
 userInput.addEventListener("change", updateGrid);
 
 for( i in resetButton){
-try {
-  resetButton[i].addEventListener("click", function() {
-      grid.innerHTML = "";
-      grid.style.setProperty("grid-template-columns", `repeat(5, 2fr)`);
-      grid.style.setProperty("grid-template-rows", `repeat(5, 2fr)`);
-      createGrid();
-    });
-} catch(e) {
-  // statements
-  console.log(e);
+  try {
+    resetButton[i].addEventListener("click", function() {
+        grid.innerHTML = "";
+        grid.style.setProperty("grid-template-columns", `repeat(5, 2fr)`);
+        grid.style.setProperty("grid-template-rows", `repeat(5, 2fr)`);
+        createGrid();
+      });
+  } catch(e) {
+    // statements
+    console.log(e);
+  } 
 }
-    
-}
-
-
 
 createGrid();
 createGrid1();

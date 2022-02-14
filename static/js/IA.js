@@ -22,8 +22,9 @@ var data={"imagen":arr}
   }
     }).then(res => res.json())
     .then(response =>{
-
     })
 }
 
+
 analizar = () => {}
+

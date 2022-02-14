@@ -6,4 +6,5 @@ from sqlalchemy import ForeignKey
 class Imagen(db.Model):
     __tablename__ = 'imagen'
     id = Column(Integer, primary_key=True)
-    imagen = Column(String)
+    patron = Column(String)
+    aprendizaje = Column(String)

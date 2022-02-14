@@ -5,7 +5,12 @@ import sqlite3
 from flask_sqlalchemy import SQLAlchemy
 import json as js
 import os
-import pickle
+
+#importamos pandas para la transpuestas
+import pandas as pd
+# para la matriz identidad
+import numpy as np
+
 dbdir = "sqlite:///" + os.path.abspath(os.getcwd()) + "/database.db"
 
 app = Flask(__name__)
@@ -22,29 +27,43 @@ def index():
 @app.route("/imagenes", methods=['POST', 'GET'])
 def imagenes():
     if request.method == "GET":
-        return render_template("imagenes.html")
+        return render_template("code.html")
     if request.method == "POST":
         # paso los datos de la peticion a json
-        data = request.json
-        print(data)
-        print(data['imagen'],type(data['imagen']))
-        serializado = js.dumps(data['imagen'])
-        print(serializado, type(serializado))
-        nueva_imagen = Imagen(imagen=serializado)
-        db.session.add(nueva_imagen)
+        patron = request.json
+        print(patron['imagen'],type(patron['imagen']))
+        
+        # para el vector 
+        vector = {'E1': patron['imagen']}
+        valorVector = pd.DataFrame(data = vector)
+        print(valorVector)
+
+        #para la transpuesta
+        valorTranspuesta = valorVector.T
+        print(valorTranspuesta)
+        
+        #resultado del patron
+        resultPatron = valorTranspuesta.values * valorVector.values
+        print(resultPatron)
+    
+        #matriz identidad
+        matrizIdentidad = np.identity(25, dtype=int)
+        print(matrizIdentidad)
+    
+        # resultado del aprendizaje del patrón
+        valorAprendizaje = resultPatron - matrizIdentidad
+        print(valorAprendizaje)
+ 
+        
+        # Guardando en la bases de datos
+        imagenPatron = js.dumps(patron['imagen'])
+        aprendizajePatron = js.dumps(valorAprendizaje.tolist())
+        print(imagenPatron, type(imagenPatron))
+        print(aprendizajePatron, type(aprendizajePatron))
+        nuevaImagen = Imagen(patron=imagenPatron, aprendizaje=aprendizajePatron)
+        db.session.add(nuevaImagen)
         db.session.commit()
         return js.dumps({"ok":1})
-
-@app.route("/cargar")
-def cargar():
-    lst = [1, 2, 3]
-
-    serializado = js.dumps(lst)
-    print(serializado, type(serializado))
-    nueva_imagen=Imagen(imagen=serializado)
-    db.session.add(nueva_imagen)
-    db.session.commit()
-    return render_template("code.html")
 
 @app.route("/mostrar")
 def mostrar():
