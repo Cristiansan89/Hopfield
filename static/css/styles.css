@@ -1,10 +1,19 @@
-  
+  body{
+    width: auto;
+    height: auto;
+  }
   .right {
     float: right;
   }
   
   .left {
     display: inline-block;
+    padding-left: 20%;
+  }
+
+  .secondMatrix {
+    display: inline-block;
+    padding-left: 20%;
   }
   
   .square {
@@ -25,8 +34,8 @@
     grid-template-rows: repeat(5, 2fr);
     border: 5px solid black;
     border-radius: 5px;
-    height: 576px;
-    width: 576px;
+    height: 450px;
+    width: 450px;
   }
 
   .gridContainer1 {
@@ -37,8 +46,8 @@
     grid-template-rows: repeat(5, 2fr);
     border: 5px solid black;
     border-radius: 5px;
-    height: 576px;
-    width: 576px;
+    height: 450px;
+    width: 450px;
   }
 
   .gridContainer2{
@@ -49,8 +58,8 @@
     grid-template-rows: repeat(5, 2fr);
     border: 3px solid black;
     border-radius: 3px;
-    height: 288px;
-    width: 288px;
+    height: 225px;
+    width: 225px;
   }
 
   #boton1{

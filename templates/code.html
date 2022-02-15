@@ -28,33 +28,60 @@
             </div>
           </div>
         </nav>
+      </div>
+
+
+
+      <div class="container-fluid">
+        <div class="row my-2">
+          <div class="col col-auto">
+            <div class="left">
+              <div class="gridContainer"></div>
+              <div class="my-4 d-inline-flex p-2 bd-highligh">
+                <div class="input-group mb-3 invisible" id="visibilidad">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Letra</span>
+                  </div>
+                  <input class="form-control" type="text" Zaria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>                
+              </div>
+            </div>
+          </div>
+          <div class="col col-auto" id="ocultarGrid1">
+            <div class="secondMatrix">
+              <div class="gridContainer1" id="bloquear"></div>
+              <div class="my-4 d-inline-flex p-2 bd-highlight">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Letra</span>
+                  </div>
+                  <input disabled="disabled" class="form-control" type="text" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>                
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="espaciar">
+          <div for="quantity" id="quantity">
+              <div class="row my-2">
+                <div class="col col-auto">
+                  <button id="boton1" class="btn btn-success">ANALIZAR</button>
+                  <button id="boton2" onclick="cargar(this);" class="reset btn btn-danger">CARGAR</button>
+                </div>
+                <div class="col col-auto">
+                  <button class="reset btn btn-warning">RESET</button>
+                </div>
+              </div>         
+          </div>
+        </div>
+
+
+
+        <hr class="bg-success">
+
       </div> 
-      <div class="row my-4">
-        <div class="col col-auto">
-          <div class="left mx-5">
-            <div class="gridContainer"></div>
-          </div>
-        </div>
-        <div class="col col-auto" id="ocultarGrid1">
-          <div class="mx-5">
-            <div class="gridContainer1" id="bloquear"></div>
-          </div>
-        </div>
-      </div>
-      <div id="espaciar">
-        <div class="my-4" for="quantity" id="quantity">
-            <div class="row">
-              <div class="col col-auto">
-                <button id="boton1" class="btn btn-success">ANALIZAR</button>
-                <button id="boton2" onclick="cargar(this);" class="reset btn btn-danger">CARGAR</button>
-              </div>
-              <div class="col col-auto">
-                <button class="reset btn btn-warning">RESET</button>
-              </div>
-            </div>         
-        </div>
-      </div>
-      <hr class="bg-success">
+     
 
     </div>
     <script type="text/javascript" src="{{url_for('static', filename='js/IA.js')}}"></script>
