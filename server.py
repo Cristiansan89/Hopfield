@@ -54,7 +54,8 @@ def imagenes():
         aprendizaje_patron = js.dumps(valor_aprendizaje.tolist())
         print(imagen_patron, type(imagen_patron))
         print(aprendizaje_patron, type(aprendizaje_patron))
-        nueva_imagen = Imagen(patron=imagen_patron, aprendizaje=aprendizaje_patron)
+        nueva_letra = patron['letra']
+        nueva_imagen = Imagen(patron=imagen_patron, aprendizaje=aprendizaje_patron, letra=nueva_letra)
         db.session.add(nueva_imagen)
         db.session.commit()
         return js.dumps({"ok": 1})

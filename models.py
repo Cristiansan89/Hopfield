@@ -8,3 +8,4 @@ class Imagen(db.Model):
     id = Column(Integer, primary_key=True)
     patron = Column(String)
     aprendizaje = Column(String)
+    letra = Column(String)
