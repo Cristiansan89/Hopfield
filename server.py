@@ -9,6 +9,7 @@ import os
 import pandas as pd
 # para la matriz identidad
 import numpy as np
+from sqlalchemy import null
 
 dbdir = "sqlite:///" + os.path.abspath(os.getcwd()) + "/database.db"
 
@@ -32,31 +33,33 @@ def imagenes():
     if request.method == "POST":
         # paso los datos de la petición a json
         patron = request.json
-        print(patron['imagen'], type(patron['imagen']))
+        aprendizaje = request.json
         # para el vector
         vector = {'E1': patron['imagen']}
         val_vector = pd.DataFrame(data=vector)
-        print(val_vector)
         # para la transpuesta
         valor_transpuesta = val_vector.T
-        print(valor_transpuesta)
         # resultado del patron
         result_patron = valor_transpuesta.values * val_vector.values
-        print(result_patron)
         # matriz identidad
         matriz_identidad = np.identity(25, dtype=int)
-        print(matriz_identidad)
         # resultado del aprendizaje del patrón
-        valor_aprendizaje = result_patron - matriz_identidad
-        print(valor_aprendizaje)
+        matriz_aprendizaje = result_patron - matriz_identidad
+        
+        if == null
+
+        else
+
+        
         # Guardando en la base de dato
         imagen_patron = js.dumps(patron['imagen'])
-        aprendizaje_patron = js.dumps(valor_aprendizaje.tolist())
-        print(imagen_patron, type(imagen_patron))
-        print(aprendizaje_patron, type(aprendizaje_patron))
         nueva_letra = patron['letra']
-        nueva_imagen = Imagen(patron=imagen_patron, aprendizaje=aprendizaje_patron, letra=nueva_letra)
-        db.session.add(nueva_imagen)
+        nueva_imagen = Imagen(patron=imagen_patron, letra=nueva_letra)
+        
+        aprendizaje_patron = js.dumps(matriz_aprendizaje.tolist())
+        nuevo_aprendizaje = Aprendizaje(aprendizaje=aprendizaje_patron)
+
+        db.session.add(nueva_imagen, nuevo_aprendizaje)
         db.session.commit()
         return js.dumps({"ok": 1})
 

@@ -7,5 +7,9 @@ class Imagen(db.Model):
     __tablename__ = 'imagen'
     id = Column(Integer, primary_key=True)
     patron = Column(String)
-    aprendizaje = Column(String)
     letra = Column(String)
+
+class Aprendizaje(db.Model):    
+    __tablename__ = 'aprendizaje'
+    id = Column(Integer, primary_key=True)
+    aprendizaje = Column(String)
