@@ -73,6 +73,24 @@
           </div>
         </div>
         <hr class="bg-success">
+        <ul>
+        {% for elem in lista -%}
+        <li>{{ elem.letra }} {{ elem.patron }}</li>
+              <div class="gridContainer2">
+                  {% for pixel in elem.patron  -%}
+              {% if pixel =="1" -%}
+                   <div class="color"></div>
+                {% else -%}
+                     
+                   
+                        <div class="square"></div>
+                     
+                {% endif -%}
+               {% endfor -%}
+       </div>
+        {% endfor -%}
+        </ul>
+
       </div> 
     </div>
     <script type="text/javascript" src="{{url_for('static', filename='js/IA.js')}}"></script>

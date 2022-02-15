@@ -23,12 +23,15 @@ from models import *
 
 @app.route("/")
 def index():
-    return render_template("code.html")
+    lista = db.session.query(Imagen).all()
+    print(lista)
+    return render_template("code.html",lista=lista)
 
 
 @app.route("/imagenes", methods=['POST', 'GET'])
 def imagenes():
     if request.method == "GET":
+
         return render_template("code.html")
     if request.method == "POST":
         # paso los datos de la petición a json
@@ -45,10 +48,23 @@ def imagenes():
         matriz_identidad = np.identity(25, dtype=int)
         # resultado del aprendizaje del patrón
         matriz_aprendizaje = result_patron - matriz_identidad
-        
-        if == null
+        primero=Aprendizaje.query.first()
 
-        else
+        print("primero ",primero)
+        if None == primero:
+            aprendizaje_patron = js.dumps(matriz_aprendizaje.tolist())
+            nuevo_aprendizaje = Aprendizaje(aprendizaje=aprendizaje_patron)
+            db.session.add(nuevo_aprendizaje)
+
+        else:
+            primero_arr = js.loads(primero.aprendizaje)
+            #vector_pesos = {'pesos': primero_arr}
+            #val_pesos = pd.DataFrame(data=vector_pesos)
+            val_pesos = np.array(primero_arr,dtype=int)
+            suma=val_pesos+matriz_aprendizaje
+            aprendizaje_patron = js.dumps(suma.tolist())
+            primero.aprendizaje=aprendizaje_patron
+            db.session.add(primero)
 
         
         # Guardando en la base de dato
@@ -56,10 +72,10 @@ def imagenes():
         nueva_letra = patron['letra']
         nueva_imagen = Imagen(patron=imagen_patron, letra=nueva_letra)
         
-        aprendizaje_patron = js.dumps(matriz_aprendizaje.tolist())
-        nuevo_aprendizaje = Aprendizaje(aprendizaje=aprendizaje_patron)
 
-        db.session.add(nueva_imagen, nuevo_aprendizaje)
+
+        db.session.add(nueva_imagen)
+
         db.session.commit()
         return js.dumps({"ok": 1})
 
