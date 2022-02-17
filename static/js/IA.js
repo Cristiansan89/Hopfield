@@ -27,7 +27,7 @@ cargar = () => {
 
 
 analizar = () => {
-  aiterar = grid.getElementsByClassName('div')
+  aiterar = grid.getElementsByTagName('div')
   arr=[]
   for(i in aiterar){
     console.log(aiterar[i])
@@ -49,7 +49,17 @@ analizar = () => {
     }
   }).then(res => res.json())
   .then(response =>{
-    console.log(response)
+    console.log(response,response['ok'])
+    grid_resultado = document.querySelector(".gridContainer1");
+    aiterar=grid_resultado.getElementsByTagName('div')
+    for( a in response['ok']){
+      console.log('aiterar[a]',response['ok'][a],aiterar[a])
+      if(response['ok'][a]==1){
+      aiterar[a].className='color'}
+      else{
+        aiterar[a].className='square'
+      }
+    }
   })
 }
 
