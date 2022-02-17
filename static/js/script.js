@@ -62,6 +62,7 @@ createGrid1();
 botonAnalizar = () => {
   document.getElementById('boton1').style.display = 'inline';
   document.getElementById('boton2').style.display = 'none';
+  document.getElementById('boton3').style.display=  'inline';
   document.getElementById('navAnalizar').className = 'nav-link active';
   document.getElementById('navCargar').className = 'nav-link';
   document.getElementById('ocultarGrid1').style.display = 'inline';
@@ -71,6 +72,7 @@ botonAnalizar = () => {
 botonCargar = () => {
   document.getElementById('boton1').style.display = 'none';
   document.getElementById('boton2').style.display = 'inline';
+  document.getElementById('boton3').style.display=  'inline';
   document.getElementById('navAnalizar').className = 'nav-link';
   document.getElementById('navCargar').className = 'nav-link active';
   document.getElementById('ocultarGrid1').style.display = 'none';

@@ -70,7 +70,7 @@
               <div for="quantity" id="quantity">
                 <div class="row">
                   <div class="col col-auto">
-                    <button id="boton1" class="btn btn-success">ANALIZAR</button>
+                    <button id="boton1" onclick="analizar(this);" class="btn btn-success">ANALIZAR</button>
                     <button id="boton2" onclick="cargar(this);" class="reset btn btn-danger">CARGAR</button>
                   </div>
                   <div class="col col-auto">
@@ -103,7 +103,6 @@
           </td>
           {% endfor -%}
         </tr>
-       
       </table>
     </div>
   </div>

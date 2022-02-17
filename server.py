@@ -1,9 +1,11 @@
+from crypt import methods
 from distutils.log import debug
 from flask import Flask, render_template, request
 # nuevos
 from flask_sqlalchemy import SQLAlchemy
 import json as js
 import os
+from itsdangerous import Serializer
 
 # pandas para la transpuesta
 import pandas as pd
@@ -31,7 +33,6 @@ def index():
 @app.route("/imagenes", methods=['POST', 'GET'])
 def imagenes():
     if request.method == "GET":
-
         return render_template("code.html")
     if request.method == "POST":
         # paso los datos de la petición a json
@@ -49,13 +50,10 @@ def imagenes():
         # resultado del aprendizaje del patrón
         matriz_aprendizaje = result_patron - matriz_identidad
         primero=Aprendizaje.query.first()
-
-        print("primero ",primero)
         if None == primero:
             aprendizaje_patron = js.dumps(matriz_aprendizaje.tolist())
             nuevo_aprendizaje = Aprendizaje(aprendizaje=aprendizaje_patron)
             db.session.add(nuevo_aprendizaje)
-
         else:
             primero_arr = js.loads(primero.aprendizaje)
             #vector_pesos = {'pesos': primero_arr}
@@ -65,19 +63,40 @@ def imagenes():
             aprendizaje_patron = js.dumps(suma.tolist())
             primero.aprendizaje=aprendizaje_patron
             db.session.add(primero)
-
-        
         # Guardando en la base de dato
         imagen_patron = js.dumps(patron['imagen'])
         nueva_letra = patron['letra']
         nueva_imagen = Imagen(patron=imagen_patron, letra=nueva_letra)
         
-
-
         db.session.add(nueva_imagen)
-
         db.session.commit()
         return js.dumps({"ok": 1})
+
+
+@app.route("/analizar", methods=['POST'])
+def analizar():
+    if request.method == 'POST':
+        patron = request.json
+        patron_reconocimiento = patron['analizar']
+        array_reconocimiento = np.array(patron_reconocimiento, dtype=int)
+        print('reconocimiento',  array_reconocimiento)
+        
+        imagen_aprendizaje = Aprendizaje.query.first()
+        aprendizaje = js.loads(imagen_aprendizaje.aprendizaje)    
+        vector_aprendizaje = np.array(aprendizaje, dtype=int)
+        print('vector aprendizaje', vector_aprendizaje)
+        patron_aprendizaje = np.dot(vector_aprendizaje ,array_reconocimiento)
+        patron_s1 = []
+        for n in patron_aprendizaje:
+            if n >= 0:
+                patron_s1.append(1)
+            elif n < 0:
+                patron_s1.append(-1) 
+
+        print(patron_s1)
+
+        return js.dumps({"ok": patron_s1})
+
 
 
 @app.route("/mostrar")
