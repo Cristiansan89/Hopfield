@@ -9,12 +9,26 @@
   
   .left {
     display: inline-block;
-    padding-left: 20%;
+  }
+
+  #tabla{
+    float: center;
+    width: 90%;
+    margin-top: 2%;
+  }
+
+  #columna1{
+    float: center;
+    width: 50%;
+  }
+
+  #columna2{
+    float: center;
+    width: 50%;
   }
 
   .secondMatrix {
     display: inline-block;
-    padding-left: 20%;
   }
   
   .square {
@@ -35,8 +49,8 @@
     grid-template-rows: repeat(5, 2fr);
     border: 5px solid black;
     border-radius: 5px;
-    height: 450px;
-    width: 450px;
+    height: 27em;
+    width: 24em;
   }
 
   .gridContainer1 {
@@ -47,8 +61,8 @@
     grid-template-rows: repeat(5, 2fr);
     border: 5px solid black;
     border-radius: 5px;
-    height: 450px;
-    width: 450px;
+    height: 27em;
+    width: 24em;
   }
 
   .gridContainer2{
@@ -65,10 +79,26 @@
 
   #boton1{
     display: block;
+    margin-top: 10px;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    left: 20%;
   }
 
   #boton2{
     display: none;
+    margin-top: 10px;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  #boton3{
+    margin-top: 10px;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
   }
 
   #espaciar{
