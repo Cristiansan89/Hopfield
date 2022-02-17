@@ -1,4 +1,3 @@
-from crypt import methods
 from distutils.log import debug
 from flask import Flask, render_template, request
 # nuevos
@@ -72,6 +71,34 @@ def imagenes():
         db.session.commit()
         return js.dumps({"ok": 1})
 
+def reconocimiento(vector_aprendizaje,array_reconocimiento):
+    patron_aprendizaje = np.dot(vector_aprendizaje ,array_reconocimiento)
+    patron_anterior = []
+    patron_nuevo = []
+    for n in patron_aprendizaje:
+        if n >= 0:
+            patron_anterior.append(1)
+        elif n < 0:
+            patron_anterior.append(-1)
+    for i in range(2,10):
+        print('iteracion ', i)
+        patron_aprendizaje = np.dot(vector_aprendizaje ,patron_anterior)
+        patron_nuevo = []
+        for n in patron_aprendizaje:
+            if n >= 0:
+                patron_nuevo.append(1)
+            elif n < 0:
+                patron_nuevo.append(-1)
+        if patron_anterior==patron_nuevo:
+            break
+
+        patron_anterior=patron_nuevo
+
+    return patron_nuevo
+
+
+
+
 
 @app.route("/analizar", methods=['POST'])
 def analizar():
@@ -85,13 +112,14 @@ def analizar():
         aprendizaje = js.loads(imagen_aprendizaje.aprendizaje)    
         vector_aprendizaje = np.array(aprendizaje, dtype=int)
         print('vector aprendizaje', vector_aprendizaje)
-        patron_aprendizaje = np.dot(vector_aprendizaje ,array_reconocimiento)
+        # patron_aprendizaje = np.dot(vector_aprendizaje ,array_reconocimiento)
         patron_s1 = []
-        for n in patron_aprendizaje:
-            if n >= 0:
-                patron_s1.append(1)
-            elif n < 0:
-                patron_s1.append(-1) 
+        # for n in patron_aprendizaje:
+        #     if n >= 0:
+        #         patron_s1.append(1)
+        #     elif n < 0:
+        #         patron_s1.append(-1) 
+        patron_s1=reconocimiento(vector_aprendizaje,array_reconocimiento)
 
         print(patron_s1)
 
