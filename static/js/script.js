@@ -70,7 +70,7 @@ botonAnalizar = () => {
   document.getElementById('navAnalizar').className = 'nav-link active';
   document.getElementById('navCargar').className = 'nav-link';
   document.getElementById('ocultarGrid1').style.display = 'inline';
-  document.getElementById('visibilidad').className = 'invisible';
+  document.getElementById('letra').className = 'invisible';
 };
 
 botonCargar = () => {
@@ -80,6 +80,5 @@ botonCargar = () => {
   document.getElementById('navAnalizar').className = 'nav-link';
   document.getElementById('navCargar').className = 'nav-link active';
   document.getElementById('ocultarGrid1').style.display = 'none';
-  document.getElementById('visibilidad').className = 'visible';
-  document.getElementById('visibilidad').className = 'input-group mb-3 visible';
+  document.getElementById('letra').className = 'visible';
 };

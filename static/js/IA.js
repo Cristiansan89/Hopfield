@@ -25,7 +25,6 @@ cargar = () => {
   letra.value = ""
 }
 
-
 analizar = () => {
   aiterar = grid.getElementsByTagName('div')
   arr=[]

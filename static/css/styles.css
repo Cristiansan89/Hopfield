@@ -23,30 +23,33 @@
   }
 
   #posicion{
-    margin-left: 22.5%;
+    margin-left: 25%;
+  }
+
+  #tabla{
+    width: 28%;
   }
 
   #letra{
     margin-top: 5%;
-    margin-left: 15%;
     margin-bottom: 5%;
   }
 
   .boton1{
     display: block;
     margin-top: 1%;
-    margin-left: 50%;
+    margin-left: 40%;
   }
 
   .boton2{
     display: none;
     margin-top: 1%;
-    margin-left: 80%;
+    margin-left: 40%;
   }
 
   .boton3{
     margin-top: 1%;
-    margin-left: 130%;
+    margin-left: 35%;
   }
 
   #espaciar{

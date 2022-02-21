@@ -12,7 +12,7 @@
   <body>
     <div id="overflow">
       <div>
-        <div>
+       <div>
           <div class="text-center">
             <h1 class="text-danger" id="size"><strong>Redes Hopfield</strong></h1>
           </div>
@@ -37,9 +37,7 @@
           <div class="row">
             <div class="col col-sm">
               <div id="matrix1">
-                <div>
-                  <div class="gridContainer"></div>
-                </div>
+                <div class="gridContainer"></div>
               </div>
             </div>
             <div class="col col-sm">
@@ -52,32 +50,36 @@
           </div>
         </div>
         <div id="posicion">
-          <div class="row">
-            <div class="col-6 col-sm-3">
-              <div id="letra">
-                <div class="input-group invisible" id="visibilidad">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Letra</span>
-                  </div>
-                  <input class="form-control" type="text" id="varLetra" Zaria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-default">
-                </div>
-              </div>
-              <div id="posicion">
-                <div class="row">
-                  <div class="col-6 col-md-3">
-                    <div for="quantity" id="quantity">
-                      <button class="boton1 btn btn-success" id="boton1" onclick="analizar(this);">ANALIZAR</button>
-                      <button class="boton2 reset btn btn-danger" id="boton2" onclick="cargar(this);">CARGAR</button>    
+          <table id="tabla">
+            <tr>
+              <td colspan="2">
+                <div class="invisible" id="letra">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-default">Letra</span>
                     </div>
-                  </div>
-                  <div  class="col-6 col-md-3">
-                    <button class="boton3 reset btn btn-warning" id="boton3">RESET</button>
+                    <input class="form-control" type="text" id="varLetra" Zaria-label="Sizing example input"
+                      aria-describedby="inputGroup-sizing-default">
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>    
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div>
+                  <div for="quantity" id="quantity">
+                    <button class="boton1 btn btn-success" id="boton1" onclick="analizar(this);">ANALIZAR</button>
+                    <button class="boton2 reset btn btn-danger" id="boton2" onclick="cargar(this);">CARGAR</button>    
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <button class="boton3 reset btn btn-warning" id="boton3">RESET</button>
+                </div>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
