@@ -49,6 +49,10 @@ for( i in resetButton){
         grid.style.setProperty("grid-template-columns", `repeat(5, 2fr)`);
         grid.style.setProperty("grid-template-rows", `repeat(5, 2fr)`);
         createGrid();
+        grid1.innerHTML = "";
+        grid1.style.setProperty("grid-template-columns", `repeat(5, 2fr)`);
+        grid1.style.setProperty("grid-template-rows", `repeat(5, 2fr)`);
+        createGrid1();
       });
   } catch(e) {
     // statements
@@ -78,5 +82,4 @@ botonCargar = () => {
   document.getElementById('ocultarGrid1').style.display = 'none';
   document.getElementById('visibilidad').className = 'visible';
   document.getElementById('visibilidad').className = 'input-group mb-3 visible';
-  
 };

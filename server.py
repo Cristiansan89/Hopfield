@@ -81,7 +81,7 @@ def reconocimiento(vector_aprendizaje,array_reconocimiento):
         elif n < 0:
             patron_anterior.append(-1)
     for i in range(2,10):
-        print('iteracion ', i)
+       # print('iteracion ', i)
         patron_aprendizaje = np.dot(vector_aprendizaje ,patron_anterior)
         patron_nuevo = []
         for n in patron_aprendizaje:
@@ -91,38 +91,21 @@ def reconocimiento(vector_aprendizaje,array_reconocimiento):
                 patron_nuevo.append(-1)
         if patron_anterior==patron_nuevo:
             break
-
         patron_anterior=patron_nuevo
 
     return patron_nuevo
-
-
-
-
 
 @app.route("/analizar", methods=['POST'])
 def analizar():
     if request.method == 'POST':
         patron = request.json
         patron_reconocimiento = patron['analizar']
-        array_reconocimiento = np.array(patron_reconocimiento, dtype=int)
-        print('reconocimiento',  array_reconocimiento)
-        
+        array_reconocimiento = np.array(patron_reconocimiento, dtype=int)        
         imagen_aprendizaje = Aprendizaje.query.first()
         aprendizaje = js.loads(imagen_aprendizaje.aprendizaje)    
         vector_aprendizaje = np.array(aprendizaje, dtype=int)
-        print('vector aprendizaje', vector_aprendizaje)
-        # patron_aprendizaje = np.dot(vector_aprendizaje ,array_reconocimiento)
         patron_s1 = []
-        # for n in patron_aprendizaje:
-        #     if n >= 0:
-        #         patron_s1.append(1)
-        #     elif n < 0:
-        #         patron_s1.append(-1) 
         patron_s1=reconocimiento(vector_aprendizaje,array_reconocimiento)
-
-        print(patron_s1)
-
         return js.dumps({"ok": patron_s1})
 
 
@@ -132,7 +115,6 @@ def mostrar():
     primera_imagen = Imagen.query.first()
     # filtrado primera_imagen=Imagen.query.filter_by(letra="a").first()
     deserialized = js.loads(primera_imagen.imagen)
-    print(deserialized, type(deserialized))
     return render_template("code.html")
 
 if __name__ == "__main__":

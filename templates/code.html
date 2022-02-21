@@ -1,122 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Red Hopfield</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link href="{{url_for('static',filename='css/styles.css')}}" rel="stylesheet" />
-</head>
-
-<body>
-  <div>
-    <div class="text-center">
-      <h1 class="text-danger display-3"><strong>Redes Hopfield</strong></h1>
-    </div>
-    <div>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" id="navAnalizar" onclick="botonAnalizar(this);"><strong>ANALIZAR</strong></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="navCargar" onclick="botonCargar(this);"><strong>CARGAR</strong></a>
-              </li>
-            </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Red Hopfield</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="{{url_for('static',filename='css/styles.css')}}" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="overflow">
+      <div>
+        <div>
+          <div class="text-center">
+            <h1 class="text-danger" id="size"><strong>Redes Hopfield</strong></h1>
           </div>
         </div>
-      </nav>
-    </div>
-    <div class="container-fluid">
-      <table border="2" align="center" id="tabla">
-        <tr>
-          <td align="center" id="columna1">
+        <div>
+          <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div>
-              <div class="left">
-                <div class="gridContainer"></div>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="reset nav-link active" id="navAnalizar" onclick="botonAnalizar(this);"><strong>ANALIZAR</strong></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="reset nav-link" id="navCargar" onclick="botonCargar(this);"><strong>CARGAR</strong></a>
+                  </li>
+                </ul>
               </div>
             </div>
-          </td>
-          <td align="center" id="columna2">
-            <div id="ocultarGrid1">
-              <div class="secondMatrix">
-                <div class="gridContainer1" id="bloquear"></div>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="d-inline-flex p-2 bd-highligh">
-              <div class="input-group invisible" id="visibilidad">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default">Letra</span>
+          </nav>
+        </div>
+        <div>
+          <div class="row">
+            <div class="col col-sm">
+              <div id="matrix1">
+                <div>
+                  <div class="gridContainer"></div>
                 </div>
-                <input class="form-control" type="text" id="varLetra" Zaria-label="Sizing example input"
-                  aria-describedby="inputGroup-sizing-default">
               </div>
             </div>
-          </td>
-          <td> </td>
-        </tr>
-        <tr>
-          <td>
-            <div id="espaciar">
-              <div for="quantity" id="quantity">
+            <div class="col col-sm">
+              <div id="matrix2">
+                <div id="ocultarGrid1">
+                  <div class="gridContainer1" id="bloquear"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="posicion">
+          <div class="row">
+            <div class="col-6 col-sm-3">
+              <div id="letra">
+                <div class="input-group invisible" id="visibilidad">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Letra</span>
+                  </div>
+                  <input class="form-control" type="text" id="varLetra" Zaria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+                </div>
+              </div>
+              <div id="posicion">
                 <div class="row">
-                  <div class="col col-auto">
-                    <button id="boton1" onclick="analizar(this);" class="btn btn-success">ANALIZAR</button>
-                    <button id="boton2" onclick="cargar(this);" class="reset btn btn-danger">CARGAR</button>
+                  <div class="col-6 col-md-3">
+                    <div for="quantity" id="quantity">
+                      <button class="boton1 btn btn-success" id="boton1" onclick="analizar(this);">ANALIZAR</button>
+                      <button class="boton2 reset btn btn-danger" id="boton2" onclick="cargar(this);">CARGAR</button>    
+                    </div>
                   </div>
-                  <div class="col col-auto">
-                    <button id="boton3" class="reset btn btn-warning">RESET</button>
+                  <div  class="col-6 col-md-3">
+                    <button class="boton3 reset btn btn-warning" id="boton3">RESET</button>
                   </div>
                 </div>
               </div>
             </div>
-          </td>
-          <td> </td>
-        </tr>
-      </table>
+          </div>    
+        </div>
+      </div>
     </div>
-    <hr class="bg-success">
-    <div>
-      <table border="2">
-        <tr>
-          {% for elem in lista -%}      
-          <td> 
-            <div class="text-center">
-              {{ elem.letra }} <!--{{ elem.patron }}-->
-            </div>
-            <div class="gridContainer2">
-              {% for pixel in elem.convertijson() -%} {% if pixel == 1 -%}
-              <div class="color"> </div>
-              {% elif pixel == -1 %}
-              <div class="square"></div>
-              {% endif -%} {% endfor -%}
-            </div>
-          </td>
-          {% endfor -%}
-        </tr>
-      </table>
+    <div id="resultado">
+      <hr class="bg-success">
+      <div>
+        <table>
+          <tr>
+            {% for elem in lista -%}      
+            <td> 
+              <div class="text-center">
+                {{ elem.letra }} <!--{{ elem.patron }} -->
+              </div>
+              <div class="gridContainer2">
+                {% for pixel in elem.convertijson() -%} {% if pixel == 1 -%}
+                <div class="color"> </div>
+                {% elif pixel == -1 %}
+                <div class="square"></div>
+                {% endif -%} {% endfor -%}
+              </div>
+            </td>
+            {% endfor -%}
+          </tr>
+        </table>
+      </div>
     </div>
-  </div>
-  <script type="text/javascript" src="{{url_for('static', filename='js/IA.js')}}"></script>
-  <script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-</body>
+    
+    <script type="text/javascript" src="{{url_for('static', filename='js/IA.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+  </body>
 
 </html>
